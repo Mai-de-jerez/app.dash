@@ -3,10 +3,12 @@ certifi==2025.1.31
 charset-normalizer==3.4.1
 click==8.1.8
 colorama==0.4.6
-dash==2.18.2
-dash-core-components==2.0.0
-dash-html-components==2.0.0
-dash-table==5.0.0
+dash
+dash-core-components
+dash-html-components
+dash-table
+pandas
+plotly
 Flask==3.0.3
 idna==3.10
 importlib_metadata==8.6.1
@@ -18,8 +20,6 @@ narwhals==1.27.1
 nest-asyncio==1.6.0
 numpy==2.2.3
 packaging==24.2
-pandas==2.2.3
-plotly==6.0.0
 python-dateutil==2.9.0.post0
 pytz==2025.1
 requests==2.32.3
