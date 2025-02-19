@@ -1,4 +1,4 @@
 # app.dash
 
-[Ir](http://127.0.0.1:8050/)
+[Ir](https://mybinder.org/v2/gh/Mai-de-jerez/app.dash/main)
 
