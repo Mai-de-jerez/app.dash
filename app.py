@@ -7,6 +7,8 @@ from dash.dependencies import Input, Output
 import pandas as pd
 import plotly.graph_objs as go
 import plotly.express as px
+import os
+
 
 # Load the data using pandas
 data = pd.read_csv('historical_automobile_sales.csv')
