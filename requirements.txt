@@ -1,7 +1,6 @@
-dash
-pandas
-plotly
-gunicorn
-
+dash==2.10.0
+pandas==2.0.3
+plotly==5.10.0
+more-itertools==8.14.0
 
 
