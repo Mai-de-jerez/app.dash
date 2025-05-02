@@ -1,4 +1,4 @@
 # app.dash
 
-[Ir](https://mybinder.org/v2/gh/Mai-de-jerez/app.dash/main)
+[Ir al dashboard](https://replit.com/@mainen1985/appdash)
 
