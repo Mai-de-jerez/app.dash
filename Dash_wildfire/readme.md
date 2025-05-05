@@ -2,8 +2,6 @@
 
 ## Objetivos
 
-Después de completar el laboratorio, podrás:
-
 - Crear un diseño de tablero con un `RadioItem` y un `Dropdown`
 - Agregar un gráfico de pastel y un gráfico de barras
 
@@ -66,10 +64,9 @@ pip3.8 -m pip install httpx==0.20 dash plotly
 ![image](https://github.com/user-attachments/assets/6965ed9c-416f-42cf-bc4a-6c84a6556b8b)
 
 
-## Obtenga el esqueleto de la aplicación
+## Código
 
-4. Puedes usar este archivo esqueleto como estructura para crear el código base para completar la siguiente tarea.
-
+4. Creamos el código:
    
 ```
 import pandas as pd
@@ -80,7 +77,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 from dash import no_update
 import datetime as dt
-#Create app
+# Create app
 app = dash.Dash(__name__)
 # Clear the layout and do not display exception till callback gets executed
 app.config.suppress_callback_exceptions = True
@@ -89,71 +86,72 @@ df =  pd.read_csv('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.
 #Extract year and month from the date column
 df['Month'] = pd.to_datetime(df['Date']).dt.month_name() #used for the names of the months
 df['Year'] = pd.to_datetime(df['Date']).dt.year
-#Layout Section of Dash
-#Task 2.1 Add the Title to the Dashboard
-app.layout = html.Div(children=[html.H1(..................),
-# TASK 2.2: Add the radio items and a dropdown right below the first inner division
-#outer division starts
+# Layout Section of Dash
+# Add the Title to the Dashboard
+app.layout = html.Div(children=[html.H1('Australia Wildfire Dashboard', 
+                                style={'textAlign': 'center', 'color': '#503D36',
+                                'font-size': 26}),
+# Add the radio items and a dropdown right below the first inner division
+     #outer division starts
      html.Div([
                    # First inner divsion for  adding dropdown helper text for Selected Drive wheels
                     html.Div([
-                            html.H2(.........),
+                            html.H2('Select Region:', style={'margin-right': '2em'}),
+
                     #Radio items to select the region
-                    #dcc.RadioItems(['NSW',.....], value ='...', id='...',inline=True)]),
+                    #dcc.RadioItems(['NSW','QL','SA','TA','VI','WA'], 'NSW', id='region',inline=True)]),
                     dcc.RadioItems([{"label":"New South Wales","value": "NSW"},
-                                    {..........},
-                                    {..........},
-                                    {..........},
-                                    {..........},
-                                    {..........},
-                                    {"label":"...","value": ..}], value = "...", id='.....,inline=True)]),
+                                    {"label":"Northern Territory","value": "NT"},
+                                    {"label":"Queensland","value": "QL"},
+                                    {"label":"South Australia","value": "SA"},
+                                    {"label":"Tasmania","value": "TA"},
+                                    {"label":"Victoria","value": "VI"},
+                                    {"label":"Western Australia","value": "WA"}],"NSW", id='region',inline=True)]),
                     #Dropdown to select year
                     html.Div([
-                            html.H2('.........', style={...........}),
-                        dcc.Dropdown(.....................)
+                            html.H2('Select Year:', style={'margin-right': '2em'}),
+                        dcc.Dropdown(df.Year.unique(), value = 2005,id='year')
                     ]),
-#Second Inner division for adding 2 inner divisions for 2 output graphs
-#TASK 2.3: Add two empty divisions for output inside the next inner division.
+#Add two empty divisions for output inside the next inner division. 
+         #Second Inner division for adding 2 inner divisions for 2 output graphs
                     html.Div([
                 
-                        html.Div([ ], id='........'),
-                        html.Div([ ], id='.........')
-                    ], style={'.........}),
+                        html.Div([ ], id='plot1'),
+                        html.Div([ ], id='plot2')
+                    ], style={'display': 'flex'}),
+
     ])
     #outer division ends
+
 ])
 #layout ends
-#TASK 2.4: Add the Ouput and input components inside the app.callback decorator.
+#Add the Ouput and input components inside the app.callback decorator.
 #Place to add @app.callback Decorator
-@app.callback([Output(component_id=.........., component_property=..........),
-               Output(component_id=.........., component_property=..........)],
-               [Input(component_id=.........., component_property=..........),
-                Input(component_id=.........., component_property=..........)])
-   
-#TASK 2.5: Add the callback function.
+@app.callback([Output(component_id='plot1', component_property='children'),
+               Output(component_id='plot2', component_property='children')],
+               [Input(component_id='region', component_property='value'),
+                Input(component_id='year', component_property='value')])
+#Add the callback function.   
 #Place to define the callback function .
-def reg_year_display(input_region,input_year):
-    
+def reg_year_display(input_region,input_year):  
     #data
    region_data = df[df['Region'] == input_region]
    y_r_data = region_data[region_data['Year']==input_year]
-    #Plot one - Monthly Average Estimated Fire Area
-   
-   est_data = .........................
-   fig1 = px.pie(.............., title="{} : Monthly Average Estimated Fire Area in year {}".format(input_region,input_year))
-   
+    #Plot one - Monthly Average Estimated Fire Area   
+   est_data = y_r_data.groupby('Month')['Estimated_fire_area'].mean().reset_index()
+   fig1 = px.pie(est_data, values='Estimated_fire_area', names='Month', title="{} : Monthly Average Estimated Fire Area in year {}".format(input_region,input_year))   
      #Plot two - Monthly Average Count of Pixels for Presumed Vegetation Fires
-   veg_data = .............................
-   fig2 = px.bar(..............., title='{} : Average Count of Pixels for Presumed Vegetation Fires in year {}'.format(input_region,input_year))
-    
-   return [.......,
-            ......... ]
+   veg_data = y_r_data.groupby('Month')['Count'].mean().reset_index()
+   fig2 = px.bar(veg_data, x='Month', y='Count', title='{} : Average Count of Pixels for Presumed Vegetation Fires in year {}'.format(input_region,input_year))    
+   return [dcc.Graph(figure=fig1),
+            dcc.Graph(figure=fig2) ]
 if __name__ == '__main__':
     app.run()
+    
 
 ```
 
-## TAREA 2.1: Agregar el título al tablero
+## Agregar el título al tablero
 
 
 Actualice la etiqueta `html.H1()` para incluir el título de la aplicación.
@@ -172,7 +170,7 @@ Después de actualizar `html.H1()` con el título de la aplicación, el `app.lay
 
 ![image](https://github.com/user-attachments/assets/69565a6c-907d-480e-856f-95370bcfb7a1)
 
-## TAREA 2.2: Agregue los elementos de radio y un menú desplegable justo debajo de la primera división interna.
+## Agregar los elementos de radio y un menú desplegable justo debajo de la primera división interna.
 
 ### Elementos de radio para seleccionar la `Región`.
 
@@ -233,17 +231,17 @@ El valor predeterminado al mostrar el menú desplegable es `2005`.
  5                   ]),
 ```
 
-## TASK 2.3: Agregue dos divisiones vacías para la salida dentro de la siguiente división interna.
+## Agregar dos divisiones vacías para la salida dentro de la siguiente división interna.
 
-* Use dos etiquetas `html.Div()`.
-* Proporcione los identificadores de división `plot1` y `plot2`.
+* Uso dos etiquetas `html.Div()` para crear las divisiones.
+* Proporciono los identificadores de división `plot1` y `plot2`.
 
 ```
 1   html.Div([ ], id='plot1'),
 2   html.Div([ ], id='plot2')
 ```
 
-## TAREA 2.4: Agregar los componentes de salida y entrada dentro del decorador app.callback.
+## Agregar los componentes de salida y entrada dentro del decorador app.callback.
 
 * Las entradas y salidas de la interfaz de nuestra aplicación se describen declarativamente como los argumentos del decorador `@app.callback`.
 - En Dash, las entradas y salidas de nuestra aplicación son simplemente las propiedades de un componente específico.
@@ -265,6 +263,35 @@ Los ID de los componentes serán `plot1` y `plot2`.
                 Input(component_id='year', component_property='value')])
 ```
 
+## TAREA 2.5: Agregar la función de devolución de llamada.
+* Cada vez que cambia una propiedad de entrada, la función que encapsula el decorador de devolución de llamada se llamará automáticamente.
+* En este caso, definamos la función `reg_year_display()`, que encapsulará nuestro decorador.
+* La función primero filtra nuestro marco de datos `df` por el valor seleccionado de la región de los elementos de radio y el año del menú desplegable, como se muestra a continuación: `region_data = df[df['Region'] == input_region]`  `y_r_data = region_data[region_data['Year']==input_year]`
+* Para el gráfico circular cogeremos el promedio mensual de la estimación de área incendiada:
+   * A continuación, agruparemos por mes y calcularemos el promedio del área estimada de incendio del marco de datos.
+   * Utilice la función `px.pie()` para trazar el gráfico circular.
+* Para el gráfico de barras sobre el promedio mensual de píxeles para presuntos incendios de vegetación:
+   * A continuación, agruparemos por mes y calcularemos el promedio del recuento del marco de datos. Utilice la función `px.bar()` para trazar el gráfico de barras.
+ 
+```
+def reg_year_display(input_region,input_year):
+    
+    #data
+   region_data = df[df['Region'] == input_region]
+   y_r_data = region_data[region_data['Year']==input_year]
+    #Plot one - Monthly Average Estimated Fire Area
+   
+   est_data = y_r_data.groupby('Month')['Estimated_fire_area'].mean().reset_index()
+ 
+   fig1 = px.pie(est_data, values='Estimated_fire_area', names='Month', title="{} : Monthly Average Estimated Fire Area in year {}".format(input_region,input_year))
+   
+     #Plot two - Monthly Average Count of Pixels for Presumed Vegetation Fires
+   veg_data = y_r_data.groupby('Month')['Count'].mean().reset_index()
+   fig2 = px.bar(veg_data, x='Month', y='Count', title='{} : Average Count of Pixels for Presumed Vegetation Fires in year {}'.format(input_region,input_year))
+    
+   return [dcc.Graph(figure=fig1),
+            dcc.Graph(figure=fig2) ]
+```
 
 
 
