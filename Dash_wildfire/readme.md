@@ -183,28 +183,26 @@ Los elementos de radio funcionan de forma similar al menú desplegable: debe lla
 * Etiquetar como `Seleccionar Región`.
 * Valor como `NSW`.
   
-For your reference below are the abrivations used in the dataset for regions
-NSW - New South Wales
-NT - Northern Territory
-QL - Queensland
-SA - South Australia
-TA - Tasmania
-VI - Victoria
+
+Para su referencia, a continuación se muestran las abreviaturas utilizadas en el conjunto de datos para las regiones.
+
+NSW - New South Wales  
+NT - Northern Territory  
+QL - Queensland  
+SA - South Australia  
+TA - Tasmania  
+VI - Victoria  
 WA - Western Australia
-Read more on RadioItems
 
-1
-2
-3
-4
-5
- html.Div([
-          html.H2('Select Region:', style={'margin-right': '2em'}),
-             #Radio items to select the region
-             dcc.RadioItems(['NSW','QL','SA','TA','VI','WA'], 'NSW', id='region',inline=True)]),
-            
 
-Copied!
+```
+ 1 html.Div([
+ 2          html.H2('Select Region:', style={'margin-right': '2em'}),
+ 3            #Radio items to select the region
+ 4            dcc.RadioItems(['NSW','QL','SA','TA','VI','WA'], 'NSW', id='region',inline=True)]),
+ ```           
+
+
 or you can use labels:value pair a well in raioditems as below
 1
 2
