@@ -1,0 +1,19 @@
+# Ignore virtual environment folder
+.venv/
+
+# Ignore PyCharm project files
+.idea/
+
+# Ignore Python bytecode files
+__pycache__/
+*.pyc
+
+# Ignore Jupyter Notebooks checkpoints
+.ipynb_checkpoints/
+
+# Ignore log files
+*.log
+
+# Ignore any other unnecessary files (como bases de datos temporales, etc.)
+*.sqlite
+*.db
