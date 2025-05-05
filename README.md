@@ -50,15 +50,10 @@ pip freeze > requirements.txt
 ```
 (Este paso es opcional y solo necesario si aún no tienes el archivo requirements.txt).
 
-## Ejecutar la aplicación Dash (asumiendo que el archivo principal es app.py):
+## Ejecutar la aplicación Dash elegida:
 ```bash
-python app.py
+python app_elegida.py
 ```
-## Ejecutar la aplicación Dash (si el archivo principal tiene otro nombre, por ejemplo, index.py):
-```bash
-python index.py
-```
-(Reemplaza index.py con el nombre de tu archivo principal si es diferente).
 
 ## Abrir tu navegador web.
 Navegar a la siguiente URL para ver la aplicación:
