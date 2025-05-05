@@ -159,14 +159,17 @@ Update the `html.H1()` tag to hold the application title.
 Application title is `Australia Wildfire Dashboard`.
 Use style parameter provided below to make the title center aligned, with color code #503D36, and font-size as 26
 
-````
-1 html.H1('Australia Wildfire Dashboard', 
-2                               style={'textAlign': 'center', 'color': '#503D36',
-3                               'font-size': 26}),
+```
+1    html.H1('Australia Wildfire Dashboard', 
+2                                  style={'textAlign': 'center', 'color': '#503D36',
+3                                  'font-size': 26}),
 ```
 
 
-After updating the html.H1() with the application title, the app.layout will look like:
+After updating the `html.H1()` with the application title, the `app.layout` will look like:
+
+![image](https://github.com/user-attachments/assets/69565a6c-907d-480e-856f-95370bcfb7a1)
+
 
 
 
