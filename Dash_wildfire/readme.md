@@ -153,11 +153,13 @@ if __name__ == '__main__':
 
 ```
 
-## TASK 2.1: Add title to the dashboard
-Update the `html.H1()` tag to hold the application title.
+## TAREA 2.1: Agregar el título al tablero
 
-Application title is `Australia Wildfire Dashboard`.
-Use style parameter provided below to make the title center aligned, with color code #503D36, and font-size as 26
+
+Actualice la etiqueta `html.H1()` para incluir el título de la aplicación.
+
+El título de la aplicación es `Australia Wildfire Dashboard`.
+Utilice el parámetro de estilo proporcionado a continuación para centrar el título con `center`, usar el código de color `#503D36` y usar el tamaño de fuente `26`.
 
 ```
 1    html.H1('Australia Wildfire Dashboard', 
@@ -166,7 +168,7 @@ Use style parameter provided below to make the title center aligned, with color 
 ```
 
 
-After updating the `html.H1()` with the application title, the `app.layout` will look like:
+Después de actualizar `html.H1()` con el título de la aplicación, el `app.layout` se verá así:
 
 ![image](https://github.com/user-attachments/assets/69565a6c-907d-480e-856f-95370bcfb7a1)
 
