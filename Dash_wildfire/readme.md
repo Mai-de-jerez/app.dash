@@ -172,6 +172,77 @@ Después de actualizar `html.H1()` con el título de la aplicación, el `app.lay
 
 ![image](https://github.com/user-attachments/assets/69565a6c-907d-480e-856f-95370bcfb7a1)
 
+## TAREA 2.2: Agregue los elementos de radio y un menú desplegable justo debajo de la primera división interna.
+
+Elementos de radio para seleccionar la `Región`.
+
+Los elementos de radio funcionan de forma similar al menú desplegable: debe llamar a dcc.RadioItems y pasar la lista de elementos. Use la propiedad inline=True para mostrar los elementos de radio en una línea horizontal.
+
+* Puede extraer las regiones del dataframe usando `df.Region.unque()` o pasar la lista de todas las regiones directamente como `['NSW','QL','SA','TA','VI','WA','NT']`.
+* Asignar el `id` de los elementos de radio como `región`.
+* Etiquetar como `Seleccionar Región`.
+* Valor como `NSW`.
+  
+For your reference below are the abrivations used in the dataset for regions
+NSW - New South Wales
+NT - Northern Territory
+QL - Queensland
+SA - South Australia
+TA - Tasmania
+VI - Victoria
+WA - Western Australia
+Read more on RadioItems
+
+1
+2
+3
+4
+5
+ html.Div([
+          html.H2('Select Region:', style={'margin-right': '2em'}),
+             #Radio items to select the region
+             dcc.RadioItems(['NSW','QL','SA','TA','VI','WA'], 'NSW', id='region',inline=True)]),
+            
+
+Copied!
+or you can use labels:value pair a well in raioditems as below
+1
+2
+3
+4
+5
+6
+7
+8
+9
+#OR you can use labels:value pair a well in raioditems as below
+            #Radio items to select the region
+                    dcc.RadioItems([{"label":"New South Wales","value": "NSW"},
+                                    {"label":"Northern Territory","value": "NT"},
+                                    {"label":"Queensland","value": "QL"},
+                                    {"label":"South Australia","value": "SA"},
+                                    {"label":"Tasmania","value": "TA"},
+                                    {"label":"Victoria","value": "VI"},
+                                    {"label":"Western Australia","value": "WA"}],"NSW", id='region',inline=True)]),
+
+Copied!
+Dropdown to choose the Year
+
+The dropdown has an id as year.
+The label as Select Year
+The values allowed in the dropdown are years from 2005 to 2020
+The default value when the dropdown is displayed is 2005.
+1
+2
+3
+4
+5
+            html.Div([
+                        html.H2('Select Year:', style={'margin-right': '2em'}),
+                        dcc.Dropdown(df.Year.unique(), value = 2005,id='year')
+                        #notice the use of unique() from pandas to fetch the values of year from the dataframe for dropdown
+                    ]),
+
 
 
 
