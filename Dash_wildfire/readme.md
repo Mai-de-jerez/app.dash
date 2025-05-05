@@ -233,6 +233,37 @@ El valor predeterminado al mostrar el menú desplegable es `2005`.
  5                   ]),
 ```
 
+## TASK 2.3: Agregue dos divisiones vacías para la salida dentro de la siguiente división interna.
+
+* Use dos etiquetas `html.Div()`.
+* Proporcione los identificadores de división `plot1` y `plot2`.
+
+```
+1   html.Div([ ], id='plot1'),
+2   html.Div([ ], id='plot2')
+```
+
+## TAREA 2.4: Agregar los componentes de salida y entrada dentro del decorador app.callback.
+
+* Las entradas y salidas de la interfaz de nuestra aplicación se describen declarativamente como los argumentos del decorador `@app.callback`.
+- En Dash, las entradas y salidas de nuestra aplicación son simplemente las propiedades de un componente específico.
+
+* En este ejemplo, tenemos dos `inputs`:
+- La entrada para Región es la propiedad `value` del componente con el ID `region`.
+- La entrada para Año es la propiedad `value` del componente con el ID `year`.
+
+* Nuestro diseño tiene dos `outputs`, por lo que necesitamos crear dos componentes de salida.
+
+Es una lista con dos parámetros de salida: el ID del componente y la propiedad. Aquí, la propiedad del componente será `children`, ya que hemos creado una división vacía y pasado `dcc.Graph` (figura) después del cálculo.
+
+Los ID de los componentes serán `plot1` y `plot2`.
+
+```
+@app.callback([Output(component_id='plot1', component_property='children'),
+               Output(component_id='plot2', component_property='children')],
+               [Input(component_id='region', component_property='value'),
+                Input(component_id='year', component_property='value')])
+```
 
 
 
