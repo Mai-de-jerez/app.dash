@@ -1,3 +1,85 @@
+# Tarea práctica: Análisis de los incendios forestales en Australia.
+
+Esta tarea se divide en dos partes.  
+La **Parte 1** le brindará la oportunidad de demostrar sus habilidades de representación gráfica y visualización, y la **Parte 2** trata sobre la creación y personalización de paneles.
+
+## Parte 1: Análisis de la actividad de incendios forestales en Australia  
+## Parte 2: Panel para mostrar gráficos según la región y el año seleccionados
+
+---
+
+## Descripción de los datos
+
+Este conjunto de datos sobre incendios forestales contiene información sobre la actividad de incendios en Australia desde 2005.  
+Puede encontrar información adicional aquí.
+
+El conjunto de datos incluye las siguientes variables:
+
+- **Región**: las 7 regiones
+- **Fecha**: en UTC y proporciona los datos con 24 horas de anticipación
+- **Estimated_fire_area**: suma diaria del área estimada del incendio para presuntos incendios de vegetación con un nivel de confianza > 75%, por región, en km²
+- **Mean_estimated_fire_brightness**: media diaria del brillo estimado del incendio en Kelvin
+- **Mean_estimated_fire_radiative_power**: media diaria de la potencia radiativa estimada en megavatios
+- **Mean_confidence**: media diaria de confianza para los incendios
+- **Std_confidence**: desviación estándar de la potencia radiativa estimada
+- **Var_confidence**: varianza de la potencia radiativa estimada
+- **Count**: número diario de píxeles detectados como incendios
+- **Reemplazado**: indica con "Y" si los datos se han reemplazado por datos de mayor calidad (con un retraso de 2–3 meses)
+
+---
+
+# Parte 1: Análisis de los incendios forestales en Australia
+
+### Objetivo
+
+Analizar y visualizar los incendios forestales en Australia utilizando el conjunto de datos proporcionado.  
+Explorarás patrones y tendencias, y crearás visualizaciones con:
+
+- Matplotlib  
+- Seaborn  
+- Pandas  
+- Folium
+
+### Tareas a realizar
+
+- **TAREA 1.1**: Comprender el cambio en el área de incendio promedio estimada a lo largo del tiempo utilizando Pandas para trazar un gráfico de líneas  
+- **TAREA 1.2**: Trazar el área estimada del incendio a lo largo del mes  
+- **TAREA 1.3**: Utilizar Seaborn para un diagrama de barras del brillo medio estimado del incendio por región  
+- **TAREA 1.4**: Desarrollar un gráfico circular para ver la proporción de píxeles de incendios por región  
+- **TAREA 1.5**: Personalizar el gráfico circular para mejor visualización  
+- **TAREA 1.6**: Usar Matplotlib para un histograma del brillo medio estimado del incendio  
+- **TAREA 1.7**: Usar Seaborn con "hue" por región para ver la distribución del brillo  
+- **TAREA 1.8**: Crear un scatter plot entre la potencia radiativa media estimada y el nivel de confianza medio  
+- **TAREA 1.9**: Usar Folium para marcar las siete regiones afectadas en el mapa de Australia
+
+---
+
+# Parte 2: Panel para mostrar gráficos según la región y el año seleccionados
+
+### Objetivo
+
+Crear un panel interactivo usando Dash y Plotly para visualizar datos según la selección del usuario.
+
+El panel permitirá al usuario seleccionar:
+
+- **Región**
+- **Año**
+
+Según estas selecciones, se mostrarán:
+
+- **Gráfico circular** con el promedio mensual del área estimada del incendio  
+- **Gráfico de barras** con el promedio mensual de píxeles para incendios presuntos
+
+### Tareas a realizar
+
+- **TAREA 2.1**: Añadir título al panel  
+- **TAREA 2.2**: Añadir `RadioItems` y un menú desplegable debajo de la primera división  
+- **TAREA 2.3**: Añadir dos divisiones vacías para los gráficos de salida  
+- **TAREA 2.4**: Añadir los componentes dentro del decorador `@app.callback`  
+- **TAREA 2.5**: Crear la función de devolución de llamada para actualizar los gráficos
+
+
+
 # Práctica Asignación Parte 2
 
 ## Objetivos
@@ -310,11 +392,5 @@ python3.8 Dash_wildfire.py
 * Haga clic en la opción Iniciar aplicación en la barra de menú. Proporcione el número de puerto y haga clic en Aceptar.
 
 ![image](https://github.com/user-attachments/assets/60c4df5c-7099-41d1-9961-eb6cd83a8372)
-
-
-
-
-
-
 
 
