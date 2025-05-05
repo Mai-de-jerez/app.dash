@@ -61,7 +61,7 @@ pip3.8 -m pip install httpx==0.20 dash plotly
 
 ## Vamos a crear la aplicación
 
-3.	Crea un nuevo archivo llamado Dash_wildfire.py
+3.	Crea un nuevo archivo llamado `Dash_wildfire.py`
 
 ![image](https://github.com/user-attachments/assets/6965ed9c-416f-42cf-bc4a-6c84a6556b8b)
 
@@ -174,7 +174,7 @@ Después de actualizar `html.H1()` con el título de la aplicación, el `app.lay
 
 ## TAREA 2.2: Agregue los elementos de radio y un menú desplegable justo debajo de la primera división interna.
 
-Elementos de radio para seleccionar la `Región`.
+### Elementos de radio para seleccionar la `Región`.
 
 Los elementos de radio funcionan de forma similar al menú desplegable: debe llamar a dcc.RadioItems y pasar la lista de elementos. Use la propiedad inline=True para mostrar los elementos de radio en una línea horizontal.
 
@@ -203,17 +203,9 @@ WA - Western Australia
  ```           
 
 
-or you can use labels:value pair a well in raioditems as below
-1
-2
-3
-4
-5
-6
-7
-8
-9
-#OR you can use labels:value pair a well in raioditems as below
+* o puede usar pares de etiquetas:valor (diccionario python) en `dcc.RadiodItems` como se muestra a continuación:
+
+```
             #Radio items to select the region
                     dcc.RadioItems([{"label":"New South Wales","value": "NSW"},
                                     {"label":"Northern Territory","value": "NT"},
@@ -223,23 +215,23 @@ or you can use labels:value pair a well in raioditems as below
                                     {"label":"Victoria","value": "VI"},
                                     {"label":"Western Australia","value": "WA"}],"NSW", id='region',inline=True)]),
 
-Copied!
-Dropdown to choose the Year
+```
 
-The dropdown has an id as year.
-The label as Select Year
-The values allowed in the dropdown are years from 2005 to 2020
-The default value when the dropdown is displayed is 2005.
-1
-2
-3
-4
-5
-            html.Div([
-                        html.H2('Select Year:', style={'margin-right': '2em'}),
-                        dcc.Dropdown(df.Year.unique(), value = 2005,id='year')
-                        #notice the use of unique() from pandas to fetch the values of year from the dataframe for dropdown
-                    ]),
+### Menú desplegable para seleccionar `year`
+
+El menú desplegable tiene como `id` al `year`.
+La etiqueta es `Select year`.
+Los valores permitidos en el menú desplegable son los años `2005 a 2020`.
+El valor predeterminado al mostrar el menú desplegable es `2005`.
+
+
+```
+ 1           html.Div([
+ 2                      html.H2('Select Year:', style={'margin-right': '2em'}),
+ 3                      dcc.Dropdown(df.Year.unique(), value = 2005,id='year')
+ 4                      #notice the use of unique() from pandas to fetch the values of year from the dataframe for dropdown
+ 5                   ]),
+```
 
 
 
