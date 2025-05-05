@@ -263,7 +263,7 @@ Los ID de los componentes serán `plot1` y `plot2`.
                 Input(component_id='year', component_property='value')])
 ```
 
-## TAREA 2.5: Agregar la función de devolución de llamada.
+## Agregar la función de devolución de llamada.
 * Cada vez que cambia una propiedad de entrada, la función que encapsula el decorador de devolución de llamada se llamará automáticamente.
 * En este caso, definamos la función `reg_year_display()`, que encapsulará nuestro decorador.
 * La función primero filtra nuestro marco de datos `df` por el valor seleccionado de la región de los elementos de radio y el año del menú desplegable, como se muestra a continuación: `region_data = df[df['Region'] == input_region]`  `y_r_data = region_data[region_data['Year']==input_year]`
@@ -292,6 +292,27 @@ def reg_year_display(input_region,input_year):
    return [dcc.Graph(figure=fig1),
             dcc.Graph(figure=fig2) ]
 ```
+
+* Finalmente, devolvemos los dos objetos de figura, `fig1` y `fig2`, al método `dcc.Graph`.
+* Una vez que haya terminado de codificar, guarde el código.
+
+  
+* A continuación, ejecute el archivo de Python con el comando
+
+```
+python3.8 Dash_wildfire.py
+```
+
+* Observe el número de puerto que se muestra en la terminal.
+
+![image](https://github.com/user-attachments/assets/1dbd1dd8-cbdf-4418-ab42-b94f9323acf2)
+
+* Haga clic en la opción Iniciar aplicación en la barra de menú. Proporcione el número de puerto y haga clic en Aceptar.
+
+![image](https://github.com/user-attachments/assets/60c4df5c-7099-41d1-9961-eb6cd83a8372)
+
+
+
 
 
 
