@@ -153,6 +153,21 @@ if __name__ == '__main__':
 
 ```
 
+## TASK 2.1: Add title to the dashboard
+Update the `html.H1()` tag to hold the application title.
+
+Application title is `Australia Wildfire Dashboard`.
+Use style parameter provided below to make the title center aligned, with color code #503D36, and font-size as 26
+
+````
+1 html.H1('Australia Wildfire Dashboard', 
+2                               style={'textAlign': 'center', 'color': '#503D36',
+3                               'font-size': 26}),
+```
+
+
+After updating the html.H1() with the application title, the app.layout will look like:
+
 
 
 
